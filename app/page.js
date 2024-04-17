@@ -13,8 +13,8 @@ export default function Home() {
           <p className="text-lg text-center p-3">Browse available schools as well as use our filtering system to find what school fits your needs.</p>
 
           <div className="flex p-6 mt-4">
-          <div className="w-60 text-center m-5 p-6 border-2 border-slate-500 bg-slate-900 hover:bg-slate-800 rounded-lg"><a className="text-xl p-7 px-9" href="/quiz">Take a Quiz!</a></div>
-          <div className="w-60 text-center m-5 p-6 border-2 border-slate-500 bg-slate-900 hover:bg-slate-800 rounded-lg"><a className="text-xl" href="/quiz">Browse Schools</a></div>
+          <div><a className="w-60 text-center m-5 p-6 border-2 border-slate-500 bg-slate-900 hover:bg-slate-800 rounded-lg block" href="/quiz"><span className="text-xl">Take a Quiz!</span></a></div>
+          <div><a className="w-60 text-center m-5 p-6 border-2 border-slate-500 bg-slate-900 hover:bg-slate-800 rounded-lg block" href="/quiz"><span className="text-xl">Browse Schools</span></a></div>
           </div>
         </div>
 
@@ -22,4 +22,4 @@ export default function Home() {
     </main>
   );
 
-} // The buttons aren't made correctly, something about the <a> tag placement but the div has to be first because flexbox so ill figure it out. I will fix the buttons in the next commit.
+} // fixed the buttons :)
