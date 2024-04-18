@@ -1,10 +1,12 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import MultipleChoiceButton from '../quizcomponents/MultipleChoiceButton';
+import WrittenResponse from '../quizcomponents/WrittenResponse';
 
 export default function QuizPage({ xmlPath }) {
   const [questions, setQuestions] = useState([]);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
+  const [ratings, setRatings] = useState([]);
 
   useEffect(() => {
     const fetchXML = async () => {
@@ -48,41 +50,52 @@ export default function QuizPage({ xmlPath }) {
     setSelectedAnswers(updatedSelectedAnswers);
   };
 
+  const handleWrittenResponseChange = (index, userAnswer) => {
+    const updatedSelectedAnswers = [...selectedAnswers];
+    updatedSelectedAnswers[index] = userAnswer;
+    setSelectedAnswers(updatedSelectedAnswers);
+  };
+
   const handleSubmitQuiz = () => {
     // Compare selected answers with correct answers
+    let totalRating = 0;
     questions.forEach((question, index) => {
       switch (question.type) {
         case 'multiple_choice':
           if (selectedAnswers[index] === question.answer) {
             console.log(`Question ${index + 1}: Correct`);
+            totalRating += 1; // Increment rating for correct multiple choice answers
           } else {
             console.log(`Question ${index + 1}: Incorrect`);
           }
           break;
-        // Handle other question types here if needed
+        case 'written_response':
+          const correctKeywords = question.keywords;
+          const userAnswer = selectedAnswers[index].toLowerCase();
+          const userKeywords = userAnswer.split(/\W+/);
+          const correctKeywordCount = correctKeywords.filter(keyword =>
+            userKeywords.includes(keyword.toLowerCase())
+          ).length;
+          console.log(`Question ${index + 1}: ${correctKeywordCount} out of ${correctKeywords.length} keywords correct`);
+          totalRating += (correctKeywordCount / correctKeywords.length); // Increment rating based on keyword correctness
+          break;
         default:
           break;
       }
     });
+    const overallRating = (totalRating / questions.length * 100).toFixed(2); // Calculate overall rating as percentage
+    console.log('Overall Rating:', overallRating);
   };
-
   return (
-    
     <div className="quiz-container">
       {questions.map((question, index) => (
         <div key={index}>
           <div className="question-label">Question {index + 1}</div>
-          
-          {/* <div>Type: {question.type}</div> */}
-          
           <div className="question">Question: {question.text}</div>
 
           {question.type === 'multiple_choice' && (
-
             <div className="answer-options">
-
               {question.options.map((option, optionIndex) => (
-
                 <MultipleChoiceButton
                   key={optionIndex}
                   option={option}
@@ -93,8 +106,13 @@ export default function QuizPage({ xmlPath }) {
               ))}
             </div>
           )}
+
           {question.type === 'written_response' && (
-            <div className='subtext'>Keywords: {question.keywords.join(', ')}</div>
+            <WrittenResponse 
+              question={question.text} 
+              keywords={question.keywords} 
+              onUserAnswerChange={(userAnswer) => handleWrittenResponseChange(index, userAnswer)}
+            />
           )}
           <hr className="line"/>
         </div>

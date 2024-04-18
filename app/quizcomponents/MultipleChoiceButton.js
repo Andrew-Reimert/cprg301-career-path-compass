@@ -1,4 +1,3 @@
-// MultipleChoiceButton.js
 import React from 'react';
 
 const MultipleChoiceButton = ({ option, selected, onSelect, className }) => {
