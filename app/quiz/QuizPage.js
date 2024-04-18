@@ -101,7 +101,7 @@ export default function QuizPage({ xmlPath }) {
                   option={option}
                   selected={selectedAnswers[index] === option}
                   onSelect={() => handleOptionSelect(index, option)}
-                  className="answer-button"
+                  className={selectedAnswers[index] === option ? "answer-button" : "answer-deselected"}
                 />
               ))}
             </div>
