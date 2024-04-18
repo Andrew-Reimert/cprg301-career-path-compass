@@ -35,7 +35,7 @@ body {
 
 .quiz-container {
   width: 46rem;
-  margin-top: 8rem;
+  margin-top: 3rem;
   padding: 3rem;
   display: flex;
   flex-direction: column;
@@ -60,9 +60,11 @@ body {
 
 .question-label {
   padding-bottom: 2rem;
+  padding-top: 3rem;
   font-size: 2rem;
   line-height: 1.75rem;
   font-weight: bold;
+  text-align: center;
 }
 
 .question {
@@ -70,6 +72,13 @@ body {
   font-size: 1.25rem;
   line-height: 1.75rem;
   padding: 2rem;
+}
+
+.subtext {
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  padding: 1rem;
 }
 
 .answer-options {
@@ -94,5 +103,32 @@ body {
 
 .answer-button:hover {
   background-color: rgb(30 41 59);
+}
+
+.line {
+  width: 100%;
+  border-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(100 116 139 / var(--tw-border-opacity));
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0.25rem;
+}
+
+.quiz-button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 1.25rem;
+  padding: 1.5rem;
+  border-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(100 116 139 / var(--tw-border-opacity));
+  border-radius: 0.5rem/* 8px */;
+}
+
+.quiz-button:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
 

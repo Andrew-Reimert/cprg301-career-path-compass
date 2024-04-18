@@ -67,6 +67,7 @@ export default function QuizPage({ xmlPath }) {
   };
 
   return (
+    
     <div className="quiz-container">
       {questions.map((question, index) => (
         <div key={index}>
@@ -93,11 +94,12 @@ export default function QuizPage({ xmlPath }) {
             </div>
           )}
           {question.type === 'written_response' && (
-            <div>Keywords: {question.keywords.join(', ')}</div>
+            <div className='subtext'>Keywords: {question.keywords.join(', ')}</div>
           )}
+          <hr className="line"/>
         </div>
       ))}
-      <button onClick={handleSubmitQuiz}>Submit Quiz</button>
+      <button className='answer-button' onClick={handleSubmitQuiz}>Submit Quiz</button>
     </div>
   );
 }
