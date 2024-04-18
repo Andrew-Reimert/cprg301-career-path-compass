@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import MultipleChoiceButton from '../quizcomponents/MultipleChoiceButton';
+import MultipleChoiceQuestion from '../quizcomponents/MultipleChoiceQuestion';
 import WrittenResponse from '../quizcomponents/WrittenResponse';
 
 export default function QuizPage({ xmlPath }) {
@@ -71,8 +71,15 @@ export default function QuizPage({ xmlPath }) {
             updatedAnswerStatus[index] = 'incorrect';
           }
           break;
-        case 'written_response':
-          // Implementation for written response questions
+          case 'written_response':
+            // Implementation for written response questions
+            const correctKeywords = question.keywords;
+            const userAnswer = selectedAnswers[index].toLowerCase();
+            const userKeywords = userAnswer.split(/\W+/);
+            const correctKeywordCount = correctKeywords.filter(keyword =>
+              userKeywords.includes(keyword.toLowerCase())
+            ).length;
+            updatedAnswerStatus[index] = correctKeywordCount === correctKeywords.length ? 'correct' : 'incorrect';
           break;
         default:
           break;
@@ -92,38 +99,21 @@ export default function QuizPage({ xmlPath }) {
           <div className="question">Question: {question.text}</div>
 
           {question.type === 'multiple_choice' && (
-            <div className="answer-options">
-            {question.options.map((option, optionIndex) => (
-              <MultipleChoiceButton
-              key={optionIndex}
-              option={option}
-              selected={selectedAnswers[index] === option}
-              onSelect={() => handleOptionSelect(index, option)}
-              className={
-                quizSubmitted
-                  ? selectedAnswers[index] === option
-                    ? answerStatus[index] === 'correct'
-                      ? 'answer-correct'
-                      : answerStatus[index] === 'incorrect'
-                        ? 'answer-incorrect'
-                        : 'answer-unselected'
-                    : question.answer === option && answerStatus[index] === 'incorrect'
-                      ? 'answer-correct'
-                      : 'answer-unselected'
-                  : selectedAnswers[index] === option
-                    ? 'answer-button'
-                    : 'answer-unselected'
-              }
+            <MultipleChoiceQuestion
+              question={question}
+              selectedAnswer={selectedAnswers[index]}
+              onSelectOption={(option) => handleOptionSelect(index, option)}
+              answerStatus={answerStatus[index]}
+              quizSubmitted={quizSubmitted}
             />
-              ))}
-            </div>
           )}
 
           {question.type === 'written_response' && (
             <WrittenResponse 
-              question={question.text} 
-              keywords={question.keywords} 
-              onUserAnswerChange={(userAnswer) => handleWrittenResponseChange(index, userAnswer)}
+            keywords={question.keywords} 
+            quizSubmitted={quizSubmitted}
+            answerStatus={answerStatus[index]} // Ensure this value is correct
+            onUserAnswerChange={(userAnswer) => handleWrittenResponseChange(index, userAnswer)}
             />
           )}
           <hr className="line"/>

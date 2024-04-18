@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const WrittenResponse = ({ question, keywords, onUserAnswerChange }) => {
+const WrittenResponse = ({ keywords, onUserAnswerChange, answerStatus, quizSubmitted }) => {
   const [userAnswer, setUserAnswer] = useState('');
 
   const handleUserAnswerChange = (e) => {
@@ -8,12 +8,19 @@ const WrittenResponse = ({ question, keywords, onUserAnswerChange }) => {
     setUserAnswer(value);
     onUserAnswerChange(value);
   };
-
+  
   return (
     <div className='question'>
-      {/*<div>Type: written_response</div>*/}
-      {/*<div>Question: {question}</div>*/}
-      {/*<div>Keywords: {keywords.join(', ')}</div>*/}
+      <div className="question-label">
+        {quizSubmitted && (
+          <>
+            {answerStatus === 'correct' ? '✔️' : answerStatus === 'incorrect' ? '❌' : null} {/* Render checkmark or cross mark */}
+          </>
+        )}
+      </div>
+      {quizSubmitted && answerStatus === 'incorrect' && (
+        <div>Keywords: {keywords.join(', ')}</div>
+       )}
       <input
         className='answer-input'
         type="text"
@@ -26,4 +33,3 @@ const WrittenResponse = ({ question, keywords, onUserAnswerChange }) => {
 };
 
 export default WrittenResponse;
-
