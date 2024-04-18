@@ -1,0 +1,29 @@
+<quiz>
+    <question type="multiple_choice">
+      <text>What is the capital of France?</text>
+      <options>
+        <option>Paris</option>
+        <option>London</option>
+        <option>Madrid</option>
+        <option>Berlin</option>
+      </options>
+      <answer>Paris</answer>
+    </question>
+
+    <question type="written_response">
+      <text>What Colours make purple?</text>
+      <keywords>
+        <keyword>Red</keyword>
+        <keyword>Blue</keyword>
+      </keywords>
+    </question>
+
+    <question type="multiple_choice">
+      <text>Noon is at 12:00am.</text>
+      <options>
+        <option>True</option>
+        <option>False</option>
+      </options>
+      <answer>False</answer>
+    </question>
+</quiz>
