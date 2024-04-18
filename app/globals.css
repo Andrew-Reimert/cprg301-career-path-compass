@@ -105,6 +105,20 @@ body {
   background-color: rgb(30 41 59);
 }
 
+.answer-deselected {
+  width: 14rem;
+  height: 4rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: rgb(2 6 23);
+  color: rgb(203 213 225);
+  border: 3px solid slategray;
+  cursor: pointer;
+}
+
 .line {
   width: 100%;
   border-width: 2px;
@@ -131,4 +145,6 @@ body {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
+
+
 
