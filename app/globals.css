@@ -105,7 +105,7 @@ body {
   background-color: rgb(30 41 59);
 }
 
-.answer-deselected {
+.answer-unsel {
   width: 14rem;
   height: 4rem;
   font-size: 1.25rem;
@@ -115,8 +115,49 @@ body {
   border-radius: 0.5rem;
   background-color: rgb(2 6 23);
   color: rgb(203 213 225);
-  border: 3px solid slategray;
+  border: 3px solid rgb(49, 56, 62);
   cursor: pointer;
+}
+
+.answer-unsel:hover {
+  border: 3px solid slategray;
+}
+
+.answer-correct {
+  width: 14rem;
+  height: 4rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: rgb(17, 127, 17);
+  color: white;
+  border: 3px solid rgb(91, 140, 91);
+  cursor: pointer;
+}
+
+.answer-incorrect {
+  width: 14rem;
+  height: 4rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: rgb(149, 33, 33);
+  color: rgba(255, 255, 255, 0.465);
+  border: 3px solid rgb(140, 73, 73);
+  cursor: pointer;
+
+}
+
+.answer-input {
+  border: 1px solid #ccc;
+  padding: 2rem;
+  margin: 3rem;
+  border-radius: 3px;
+  color: black;
 }
 
 .line {

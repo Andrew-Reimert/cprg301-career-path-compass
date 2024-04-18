@@ -117,7 +117,7 @@ export default function QuizPage({ xmlPath }) {
           <hr className="line"/>
         </div>
       ))}
-      <button className='answer-deselected' onClick={handleSubmitQuiz}>Submit Quiz</button>
+      <button className='answer-button' onClick={handleSubmitQuiz}>Submit Quiz</button>
     </div>
   );
 }
