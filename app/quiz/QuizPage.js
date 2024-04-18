@@ -6,7 +6,8 @@ import WrittenResponse from '../quizcomponents/WrittenResponse';
 export default function QuizPage({ xmlPath }) {
   const [questions, setQuestions] = useState([]);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
-  const [ratings, setRatings] = useState([]);
+  const [quizSubmitted, setQuizSubmitted] = useState(false);
+  const [answerStatus, setAnswerStatus] = useState([]); 
 
   useEffect(() => {
     const fetchXML = async () => {
@@ -35,7 +36,8 @@ export default function QuizPage({ xmlPath }) {
         });
 
         setQuestions(parsedQuestions.filter(Boolean));
-        setSelectedAnswers(new Array(parsedQuestions.length).fill('')); // Initialize selectedAnswers array
+        setSelectedAnswers(new Array(parsedQuestions.length).fill(''));
+        setAnswerStatus(new Array(parsedQuestions.length).fill(null)); 
       } catch (error) {
         console.error('Error fetching or parsing XML:', error);
       }
@@ -44,48 +46,44 @@ export default function QuizPage({ xmlPath }) {
     fetchXML();
   }, [xmlPath]);
 
-  const handleOptionSelect = (index, option) => {
-    const updatedSelectedAnswers = [...selectedAnswers];
-    updatedSelectedAnswers[index] = option;
-    setSelectedAnswers(updatedSelectedAnswers);
-  };
-
   const handleWrittenResponseChange = (index, userAnswer) => {
     const updatedSelectedAnswers = [...selectedAnswers];
     updatedSelectedAnswers[index] = userAnswer;
     setSelectedAnswers(updatedSelectedAnswers);
   };
 
+  const handleOptionSelect = (index, option) => {
+    const updatedSelectedAnswers = [...selectedAnswers];
+    updatedSelectedAnswers[index] = option;
+    setSelectedAnswers(updatedSelectedAnswers);
+  };
+
   const handleSubmitQuiz = () => {
-    // Compare selected answers with correct answers
     let totalRating = 0;
+    const updatedAnswerStatus = [...answerStatus];
     questions.forEach((question, index) => {
       switch (question.type) {
         case 'multiple_choice':
           if (selectedAnswers[index] === question.answer) {
-            console.log(`Question ${index + 1}: Correct`);
-            totalRating += 1; // Increment rating for correct multiple choice answers
+            updatedAnswerStatus[index] = 'correct';
+            totalRating += 1;
           } else {
-            console.log(`Question ${index + 1}: Incorrect`);
+            updatedAnswerStatus[index] = 'incorrect';
           }
           break;
         case 'written_response':
-          const correctKeywords = question.keywords;
-          const userAnswer = selectedAnswers[index].toLowerCase();
-          const userKeywords = userAnswer.split(/\W+/);
-          const correctKeywordCount = correctKeywords.filter(keyword =>
-            userKeywords.includes(keyword.toLowerCase())
-          ).length;
-          console.log(`Question ${index + 1}: ${correctKeywordCount} out of ${correctKeywords.length} keywords correct`);
-          totalRating += (correctKeywordCount / correctKeywords.length); // Increment rating based on keyword correctness
+          // Implementation for written response questions
           break;
         default:
           break;
       }
     });
-    const overallRating = (totalRating / questions.length * 100).toFixed(2); // Calculate overall rating as percentage
+    setAnswerStatus(updatedAnswerStatus);
+    setQuizSubmitted(true); // Set quiz as submitted
+    const overallRating = (totalRating / questions.length * 100).toFixed(2);
     console.log('Overall Rating:', overallRating);
   };
+
   return (
     <div className="quiz-container">
       {questions.map((question, index) => (
@@ -95,14 +93,28 @@ export default function QuizPage({ xmlPath }) {
 
           {question.type === 'multiple_choice' && (
             <div className="answer-options">
-              {question.options.map((option, optionIndex) => (
-                <MultipleChoiceButton
-                  key={optionIndex}
-                  option={option}
-                  selected={selectedAnswers[index] === option}
-                  onSelect={() => handleOptionSelect(index, option)}
-                  className={selectedAnswers[index] === option ? "answer-button" : "answer-deselected"}
-                />
+            {question.options.map((option, optionIndex) => (
+              <MultipleChoiceButton
+              key={optionIndex}
+              option={option}
+              selected={selectedAnswers[index] === option}
+              onSelect={() => handleOptionSelect(index, option)}
+              className={
+                quizSubmitted
+                  ? selectedAnswers[index] === option
+                    ? answerStatus[index] === 'correct'
+                      ? 'answer-correct'
+                      : answerStatus[index] === 'incorrect'
+                        ? 'answer-incorrect'
+                        : 'answer-unselected'
+                    : question.answer === option && answerStatus[index] === 'incorrect'
+                      ? 'answer-correct'
+                      : 'answer-unselected'
+                  : selectedAnswers[index] === option
+                    ? 'answer-button'
+                    : 'answer-unselected'
+              }
+            />
               ))}
             </div>
           )}
