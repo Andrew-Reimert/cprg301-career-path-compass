@@ -1,29 +1,115 @@
 <quiz>
-    <question type="multiple_choice">
-      <text>What is the capital of France?</text>
+  <question type="multiple_choice">
+      <text>What is the output of the following code?</text>
+      <code>int x = 5; System.out.println(++x);</code>
       <options>
-        <option>Paris</option>
-        <option>London</option>
-        <option>Madrid</option>
-        <option>Berlin</option>
+          <option>5</option>
+          <option>6</option>
+          <option>4</option>
+          <option>Error</option>
       </options>
-      <answer>Paris</answer>
-    </question>
+      <answer>6</answer>
+  </question>
 
-    <question type="written_response">
-      <text>What Colours make purple?</text>
+  <question type="written_response">
+      <text>Explain the difference between == and equals() in Java.</text>
       <keywords>
-        <keyword>Red</keyword>
-        <keyword>Blue</keyword>
-      </keywords>
-    </question>
+        <keyword>==</keyword>
+        <keyword>object references</keyword>
+        <keyword>equals()</keyword>
+        <keyword>compares</keyword>
+        <keyword>object contents</keyword>
+    </keywords>
+    
+  </question>
 
-    <question type="multiple_choice">
-      <text>Noon is at 12:00am.</text>
+  <question type="multiple_choice">
+      <text>Which of the following is a valid way to declare an array in Java?</text>
       <options>
-        <option>True</option>
-        <option>False</option>
+          <option>int[] arr = new int[5];</option>
+          <option>int arr[] = new int[5];</option>
+          <option>int arr[5];</option>
+          <option>int arr = new int[5];</option>
       </options>
-      <answer>False</answer>
-    </question>
+      <answer>int[] arr = new int[5];</answer>
+  </question>
+
+  <question type="multiple_choice">
+    <text>Which of the following is not a primitive data type in Java?</text>
+    <options>
+        <option>int</option>
+        <option>float</option>
+        <option>String</option>
+        <option>boolean</option>
+    </options>
+    <answer>String</answer>
+  </question>
+
+  <question type="written_response">
+      <text>What is the purpose of the 'final' keyword in Java?</text>
+      <keywords>
+          <keyword>final</keyword> 
+          <keyword>restrict</keyword>
+          <keyword>from</keyword>
+          <keyword>changing</keyword>
+          <keyword>variables</keyword>
+          <keyword>methods</keyword>
+          <keyword>classes</keyword>
+      </keywords>
+  </question>
+
+  <question type="multiple_choice">
+      <text>What is the output of the following code?</text>
+      <code>String str = "hello"; System.out.println(str.length());</code>
+      <options>
+          <option>6</option>
+          <option>5</option>
+          <option>1</option>
+          <option>Error</option>
+      </options>
+      <answer>5</answer>
+  </question>
+
+  <question type="multiple_choice">
+      <text>Which of the following sorting algorithms has the worst-case time complexity of O(n^2)?</text>
+      <options>
+          <option>Bubble Sort</option>
+          <option>Quick Sort</option>
+          <option>Merge Sort</option>
+          <option>Insertion Sort</option>
+      </options>
+      <answer>Bubble Sort</answer>
+  </question>
+
+  <question type="written_response">
+    <text>Explain the concept of polymorphism in object-oriented programming.</text>
+    <keywords>
+        <keyword>Polymorphism</keyword>
+        <keyword>classes</keyword>
+        <keyword>common superclass</keyword>
+    </keywords>
+</question>
+
+<question type="multiple_choice">
+    <text>What is the result of the following code snippet?</text>
+    <code>int[] arr = {1, 2, 3, 4, 5}; System.out.println(arr[5]);</code>
+    <options>
+        <option>1</option>
+        <option>5</option>
+        <option>ArrayIndexOutOfBoundsException</option>
+        <option>Compilation Error</option>
+    </options>
+    <answer>ArrayIndexOutOfBoundsException</answer>
+  </question>
+
+  <question type="multiple_choice">
+    <text>Which of the following statements best describes the difference between synchronous and asynchronous programming?</text>
+    <options>
+        <option>Synchronous programming involves executing tasks concurrently, while asynchronous programming involves executing tasks sequentially.</option>
+        <option>Synchronous programming executes tasks one after the other, while asynchronous programming allows tasks to run concurrently.</option>
+        <option>Synchronous programming allows tasks to run concurrently, while asynchronous programming executes tasks one after the other.</option>
+        <option>There is no difference between synchronous and asynchronous programming.</option>
+    </options>
+    <answer>Synchronous programming executes tasks one after the other, while asynchronous programming allows tasks to run concurrently.</answer>
+  </question>
 </quiz>
