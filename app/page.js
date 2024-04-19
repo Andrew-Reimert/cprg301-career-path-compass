@@ -14,7 +14,7 @@ export default function Home() {
 
           <div className="flex p-6 mt-4">
           <div><a className="w-60 text-center m-5 p-6 border-2 border-slate-500 bg-slate-900 hover:bg-slate-800 rounded-lg block" href="/quizbrowser"><span className="text-xl">Take a Quiz!</span></a></div>
-          <div><a className="w-60 text-center m-5 p-6 border-2 border-slate-500 bg-slate-900 hover:bg-slate-800 rounded-lg block" href="/quizbrowser"><span className="text-xl">Browse Schools</span></a></div>
+          <div><a className="w-60 text-center m-5 p-6 border-2 border-slate-500 bg-slate-900 hover:bg-slate-800 rounded-lg block" href="/schoolbrowser"><span className="text-xl">Browse Schools</span></a></div>
           </div>
         </div>
 

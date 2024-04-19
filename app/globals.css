@@ -88,8 +88,8 @@ body {
 }
 
 .answer-button {
-  width: 14rem;
-  height: 4rem;
+  width: fit-content;
+  height: fit-content;
   font-size: 1.25rem;
   line-height: 1.75rem;
   padding: 0.5rem 1rem;
@@ -106,8 +106,8 @@ body {
 }
 
 .answer-unselected {
-  width: 14rem;
-  height: 4rem;
+  width: fit-content;
+  height: fit-content;
   font-size: 1.25rem;
   line-height: 1.75rem;
   padding: 0.5rem 1rem;
@@ -124,8 +124,8 @@ body {
 }
 
 .answer-correct {
-  width: 14rem;
-  height: 4rem;
+  width: fit-content;
+  height: fit-content;
   font-size: 1.25rem;
   line-height: 1.75rem;
   padding: 0.5rem 1rem;
@@ -138,8 +138,8 @@ body {
 }
 
 .answer-incorrect {
-  width: 14rem;
-  height: 4rem;
+  width: fit-content;
+  height: fit-content;
   font-size: 1.25rem;
   line-height: 1.75rem;
   padding: 0.5rem 1rem;

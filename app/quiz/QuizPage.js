@@ -96,7 +96,7 @@ export default function QuizPage({ xmlPath }) {
       {questions.map((question, index) => (
         <div key={index}>
           <div className="question-label">Question {index + 1}</div>
-          <div className="question">Question: {question.text}</div>
+          <div className="question w-fit">Question: {question.text}</div>
 
           {question.type === 'multiple_choice' && (
             <MultipleChoiceQuestion
