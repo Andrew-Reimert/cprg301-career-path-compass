@@ -1,5 +1,5 @@
 
-export default function Schools() {
+export default function SchoolBrowser() {
   return (
     <main className="flex flex-col items-center">
         <div className="w-auto flex items-center flex-col">

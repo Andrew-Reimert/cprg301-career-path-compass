@@ -8,6 +8,7 @@ export default function QuizPage({ xmlPath }) {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [quizSubmitted, setQuizSubmitted] = useState(false);
   const [answerStatus, setAnswerStatus] = useState([]); 
+  const [overallRating, setOverallRating] = useState(null);
 
   useEffect(() => {
     const fetchXML = async () => {
@@ -87,8 +88,8 @@ export default function QuizPage({ xmlPath }) {
     });
     setAnswerStatus(updatedAnswerStatus);
     setQuizSubmitted(true); // Set quiz as submitted
-    const overallRating = (totalRating / questions.length * 100).toFixed(2);
-    console.log('Overall Rating:', overallRating);
+    const overallRatingLocal = (totalRating / questions.length * 100).toFixed(2);
+    setOverallRating(overallRatingLocal);
   };
 
   return (
@@ -96,7 +97,7 @@ export default function QuizPage({ xmlPath }) {
       {questions.map((question, index) => (
         <div key={index}>
           <div className="question-label">Question {index + 1}</div>
-          <div className="question w-fit">Question: {question.text}</div>
+          <div className="question w-fit">{question.text}</div>
 
           {question.type === 'multiple_choice' && (
             <MultipleChoiceQuestion
@@ -119,7 +120,14 @@ export default function QuizPage({ xmlPath }) {
           <hr className="line"/>
         </div>
       ))}
-      <button className='answer-button' onClick={handleSubmitQuiz}>Submit Quiz</button>
+      {quizSubmitted ? (
+        <div className="overall-rating">Overall Rating: {overallRating}%</div>
+      ) : (
+        <button className='answer-button' onClick={handleSubmitQuiz}>Submit Quiz</button>
+      )}
+      {quizSubmitted && (
+        <a className='answer-button' href="../schoolbrowser">Browse Schools</a>
+      )}
     </div>
   );
 }

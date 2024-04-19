@@ -1,7 +1,6 @@
 <quiz>
   <question type="multiple_choice">
-      <text>What is the output of the following code?</text>
-      <code>int x = 5; System.out.println(++x);</code>
+      <text>What is the output of the following code: int x = 5; System.out.println(++x);</text>
       <options>
           <option>5</option>
           <option>6</option>
@@ -14,10 +13,7 @@
   <question type="written_response">
       <text>Explain the difference between == and equals() in Java.</text>
       <keywords>
-        <keyword>==</keyword>
         <keyword>object references</keyword>
-        <keyword>equals()</keyword>
-        <keyword>compares</keyword>
         <keyword>object contents</keyword>
     </keywords>
     
@@ -48,10 +44,7 @@
   <question type="written_response">
       <text>What is the purpose of the 'final' keyword in Java?</text>
       <keywords>
-          <keyword>final</keyword> 
-          <keyword>restrict</keyword>
-          <keyword>from</keyword>
-          <keyword>changing</keyword>
+          <keyword>protects</keyword>
           <keyword>variables</keyword>
           <keyword>methods</keyword>
           <keyword>classes</keyword>
@@ -59,8 +52,7 @@
   </question>
 
   <question type="multiple_choice">
-      <text>What is the output of the following code?</text>
-      <code>String str = "hello"; System.out.println(str.length());</code>
+      <text>What is the output of the following code? String str = "hello"; System.out.println(str.length());</text>
       <options>
           <option>6</option>
           <option>5</option>
@@ -91,8 +83,7 @@
 </question>
 
 <question type="multiple_choice">
-    <text>What is the result of the following code snippet?</text>
-    <code>int[] arr = {1, 2, 3, 4, 5}; System.out.println(arr[5]);</code>
+    <text>What is the result of the following code snippet? int[] arr = {1, 2, 3, 4, 5}; System.out.println(arr[5]);</text> 
     <options>
         <option>1</option>
         <option>5</option>
