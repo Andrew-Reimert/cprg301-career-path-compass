@@ -197,6 +197,8 @@ body {
   --tw-border-opacity: 1;
   border-color: rgb(100 116 139 / var(--tw-border-opacity));
   border-radius: 0.5rem/* 8px */;
+  --tw-bg-opacity: 1;
+  background-color: rgb(3 7 18 / var(--tw-bg-opacity));
 }
 
 .quiz-button:hover {

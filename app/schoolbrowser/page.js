@@ -7,9 +7,9 @@ export default function Schools() {
           <h2 className="text-4xl p-6 mt-7 text-center">Browse Schools</h2>
 
           <div className="flex items-center flex-col w-full">
-            <a className="quiz-button" href="../quiz"><span className="text-5xl">Southern Alberta Institute of Technology</span></a>
-            <a className="quiz-button" href="../quiz"><span className="text-5xl">Bow Valley College</span></a>
-            <a className="quiz-button" href="../quiz"><span className="text-5xl">University of Calgary</span></a>
+            <a className="quiz-button" href="https://www.sait.ca/"><span className="text-5xl">Southern Alberta Institute of Technology</span></a>
+            <a className="quiz-button" href="https://bowvalleycollege.ca/"><span className="text-5xl">Bow Valley College</span></a>
+            <a className="quiz-button" href="https://www.ucalgary.ca/"><span className="text-5xl">University of Calgary</span></a>
           </div>
         </div>
     </main>
